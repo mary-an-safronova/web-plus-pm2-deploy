@@ -2,6 +2,7 @@ require('dotenv').config({ path: '.env.deploy' });
 
 const {
   DEPLOY_USER,
+  DEPLOY_KEY,
   DEPLOY_HOST,
   DEPLOY_PATH,
   DEPLOY_REF = 'origin/master',
@@ -18,6 +19,7 @@ module.exports = {
   deploy: {
     production: {
       user: DEPLOY_USER,
+      key: DEPLOY_KEY,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
