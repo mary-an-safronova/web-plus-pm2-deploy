@@ -12,6 +12,9 @@ module.exports = {
   apps: [{
     name: 'backend',
     script: './dist/app.js',
+    env: {
+      PATH: '~/.nvm/versions/node/v16.20.2/bin:/usr/bin',
+    },
   }],
 
   // Настройка деплоя
@@ -23,7 +26,7 @@ module.exports = {
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
       'pre-deploy-local': `scp ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend && scp ./.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend`,
-      'post-deploy': 'cd ~/source/backend && npm i && npm run build && pm2 restart ecosystem.config.js',
+      'post-deploy': 'cd ~/source/backend && ~/.nvm/versions/node/v16.20.2/bin/npm i && ~/.nvm/versions/node/v16.20.2/bin/npm run build && pm2 restart ecosystem.config.js',
     },
   },
 };
