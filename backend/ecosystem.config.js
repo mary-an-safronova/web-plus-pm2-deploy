@@ -6,6 +6,7 @@ const {
   DEPLOY_PATH,
   DEPLOY_REF = 'origin/master',
   DEPLOY_REPO,
+  NPM,
 } = process.env;
 
 module.exports = {
@@ -23,7 +24,7 @@ module.exports = {
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
       'pre-deploy-local': `scp ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend && scp ./.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend`,
-      'post-deploy': 'cd ~/source/backend && npm i && npm run build && pm2 restart ecosystem.config.js',
+      'post-deploy': `cd ~/source/backend && ${NPM} i && ${NPM} run build && pm2 restart ecosystem.config.js`,
     },
   },
 };
