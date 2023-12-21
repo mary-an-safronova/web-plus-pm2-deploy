@@ -21,6 +21,7 @@ module.exports = {
       user: DEPLOY_USER,
       key: DEPLOY_KEY,
       host: DEPLOY_HOST,
+      ssh_options: 'StrictHostKeyChecking=no',
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
